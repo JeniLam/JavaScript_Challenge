@@ -39,7 +39,7 @@ body {
 }
 
 .navbar {
-  padding: 5px;
+  padding: 20px;
   margin: 0;
 }
 
@@ -94,8 +94,8 @@ select {
 /* The styles for the parallax */
 .hero {
   position: relative;
-  height: 550px;
-  padding: 20px;
+  height: 450px;
+  padding: 50px;
   margin: 0;
   background: black;
   background-image: url("../images/nasa.jpg");
@@ -198,7 +198,7 @@ select {
   }
 
   to {
-    font-size: 7.5rem;
+    font-size: 10.5rem;
     opacity: 1;
   }
 }
@@ -209,7 +209,7 @@ select {
   }
 
   to {
-    font-size: 5.5rem;
+    font-size: 7.5rem;
     opacity: 1;
   }
 }
