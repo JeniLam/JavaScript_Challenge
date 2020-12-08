@@ -8,11 +8,12 @@ var tbody = d3.select("tbody");
 
 // Loop through data array
 tableData.forEach(sighting => {
+
     // append one table row for each ufo object
     var row = tbody.append("tr");
 
-    // use object.entries and forEach to iterate through keys and values (day 2 activity 7 & 8)
-    Object.entries(sighting).forEach(([key,value]) => {
+    // use object.entries and forEach to iterate through keys and values (day 2 activity 7 & 8 and Day 3 act 3)
+    Object.entries(sighting).forEach(([key, value]) => {
         // append one cell per  value within data set (table headers in html)
         var cell = row.append("td");
         cell.text(value);
@@ -20,4 +21,39 @@ tableData.forEach(sighting => {
 });
 
 //*** Use a date form in your HTML document and write JavaScript code that will listen
-//for events and search through the date/time column to find rows that match user input.
+// Assign data from 'data.js' to a variable
+var sightings = data;
+
+// select the button
+var filterTableButton = d3.select("#filter-btn");
+console.log(filterTableButton);
+
+// select form
+var form = d3.select("#datetime");
+console.log(form);
+
+// Create event handlers
+filterTableButton.on("click", runEnter);
+form.on("submit", runEnter);
+
+// Complete the event handler function for the form
+function runEnter() {
+    // Prevent the page from refreshing
+    d3.event.preventDefault();
+
+    // Select the input element and get the raw HTML node
+    var inputElement = d3.select(".form-control");
+
+    // Get the value property of the input element
+    var inputValue = inputElement.property("value");
+
+    console.log(inputValue);
+    console.log(sightings);
+
+    var filteredData = sightings.filter((sighting) => sighting.datetime === inputValue);
+
+    console.log(filteredData);
+}
+
+
+//for events and search through the date/time column to find rows that match user input
