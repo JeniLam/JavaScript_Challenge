@@ -21,8 +21,8 @@ tableData.forEach(sighting => {
 });
 
 //*** Use a date form in your HTML document and write JavaScript code that will listen
-// Assign data from 'data.js' to a variable
-// var sightings = data;
+// Most of the below copied from Day 3 Activity 9
+
 
 // select the button
 var filterTableButton = d3.select("#filter-btn");
@@ -48,8 +48,7 @@ function runEnter() {
     var inputValue = inputElement.property("value");
 
     console.log(inputValue);
-    console.log(tableData);
-
+    
     // use input on form to filter data by datetime in data.js file
     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
 
