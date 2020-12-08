@@ -22,8 +22,6 @@ tableData.forEach(sighting => {
 
 //*** Use a date form in your HTML document and write JavaScript code that will listen
 // Most of the below copied from Day 3 Activity 9
-
-
 // select the button
 var filterTableButton = d3.select("#filter-btn");
 console.log(filterTableButton);
@@ -55,8 +53,14 @@ function runEnter() {
     console.log(filteredData);
 
 // Use filtered data to repopulate the table
-    
-}
+   filteredData.forEach(function(filteredItem) {
+       var row = tbody.append("tr");
+       Object.entries(filteredItem).forEach(([key,value]) => {
+           var cell = row.append("td");
+           cell.text(value);
+       });
+   });
+};
 
 
 //for events and search through the date/time column to find rows that match user input
