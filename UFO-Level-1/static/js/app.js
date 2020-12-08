@@ -22,7 +22,7 @@ tableData.forEach(sighting => {
 
 //*** Use a date form in your HTML document and write JavaScript code that will listen
 // Assign data from 'data.js' to a variable
-var sightings = data;
+// var sightings = data;
 
 // select the button
 var filterTableButton = d3.select("#filter-btn");
@@ -48,11 +48,15 @@ function runEnter() {
     var inputValue = inputElement.property("value");
 
     console.log(inputValue);
-    console.log(sightings);
+    console.log(tableData);
 
-    var filteredData = sightings.filter((sighting) => sighting.datetime === inputValue);
+    // use input on form to filter data by datetime in data.js file
+    var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
 
     console.log(filteredData);
+
+// Use filtered data to repopulate the table
+    
 }
 
 
