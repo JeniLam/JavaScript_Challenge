@@ -27,7 +27,7 @@ var filterTableButton = d3.select("#filter-btn");
 console.log(filterTableButton);
 
 // select form
-var form = d3.select("#datetime");
+var form = d3.select("#datetimeform");
 console.log(form);
 
 // Create event handlers
@@ -38,6 +38,9 @@ form.on("submit", runEnter);
 function runEnter() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
+
+    // clear the table
+    tbody.html("");
 
     // Select the input element and get the raw HTML node
     var inputElement = d3.select(".form-control");
