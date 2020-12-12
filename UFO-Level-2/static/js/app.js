@@ -51,7 +51,7 @@ function runEnter() {
     var inputElementState = d3.select("#state");
     var inputElementCountry = d3.select("#country");
     var inputElementShape = d3.select("#shape");
-    var inputElementDuration = d3.select("#duration");
+
 
     // Get the value property of the input element 6 variables
     var inputValueDate = inputElementDate.property("value");
@@ -59,14 +59,14 @@ function runEnter() {
     var inputValueState = inputElementState.property('value');
     var inputValueCountry = inputElementCountry.property('value');
     var inputValueShape = inputElementShape.property('value');
-    var inputValueDuration = inputElementDuration.property('value');
+
 
     console.log(inputValueDate);
     console.log(inputValueCity);
     console.log(inputValueState);
     console.log(inputValueCountry);
     console.log(inputValueShape);
-    console.log(inputValueDuration);
+    
 
     // use input on form to filter data by datetime in data.js file per Dan, can chain the filters to get data needed. will need an or statement so no matter how many filters entered it will run.
     // from office hours 12.12 - use || ! so that if the filter does not have data it skips that filter and returns only the filters that have input then Mo helped after class
@@ -75,9 +75,8 @@ function runEnter() {
         .filter(sighting => sighting.city === inputValueCity || !inputValueCity)
         .filter(sighting => sighting.state === inputValueState || !inputValueState)
         .filter(sighting => sighting.country === inputValueCountry || !inputValueCountry)
-        .filter(sighting => sighting.shape === inputValueShape || !inputValueShape)
-        .filter(sighting => sighting.durationMinutes === inputValueDuration || !inputValueDuration);
-
+        .filter(sighting => sighting.shape === inputValueShape || !inputValueShape);
+        
 
     console.log(filteredData);
 
