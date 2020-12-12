@@ -53,7 +53,8 @@ function runEnter() {
 
     console.log(inputValue);
     
-    // use input on form to filter data by datetime in data.js file per Dan, can chain the filters to get data needed.
+    // use input on form to filter data by datetime in data.js file per Dan, can chain the filters to get data needed. will need an or statement so no matter how many filters entered it will run.
+    // from office hours 12.12 - use || ! so that if the filter does not have data it skips that filter and returns only the filters that have input
     // data from data.js for reference
     // datetime: "1/1/2010",
     // city: "bonita",
@@ -62,6 +63,11 @@ function runEnter() {
     // shape: "light",
     // durationMinutes: "13 minutes",
     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
+    sighting.city === inputValue
+    sighting.state === inputValue
+    sighting.country === inputValue
+    sighting.shape === inputValue
+    sighting.durationMinutes === inputValue
 
     console.log(filteredData);
 
