@@ -45,14 +45,24 @@ function runEnter() {
     // clear the table
     tbody.html("");
 
-    // Select the input element and get the raw HTML node
-    var inputElement = d3.select(".form-control");
+    // Select the input element and get the raw HTML node 6 variables
+    var inputElementDate = d3.select("#datetime");
+    var inputElementCity = d3.select("#city");
+    var inputElementState = d3.select("#state");
+    var inputElementCountry = d3.select("#country");
+    var inputElementShape = d3.select("#shape");
+    var inputElementDuration = d3.select("#duration");
 
-    // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+    // Get the value property of the input element 6 variables
+    var inputValueDate = inputElementDate.property("value");
+    var inputValueCity = inputElementCity.property("value");
+    var inputValueState = inputElementState.property('value');
+    var inputValueCountry = inputElementCountry.property('value');
+    var inputValueShape = inputElementShape.property('value');
+    var inputValueDuration = inputElementDuration.property('value');
 
     console.log(inputValue);
-    
+
     // use input on form to filter data by datetime in data.js file per Dan, can chain the filters to get data needed. will need an or statement so no matter how many filters entered it will run.
     // from office hours 12.12 - use || ! so that if the filter does not have data it skips that filter and returns only the filters that have input
     // data from data.js for reference
@@ -62,21 +72,23 @@ function runEnter() {
     // country: "us",
     // shape: "light",
     // durationMinutes: "13 minutes",
-    var filteredData = tableData.filter((sighting) => sighting.datetime === inputValue);
-    sighting.city === inputValue
-    sighting.state === inputValue
-    sighting.country === inputValue
-    sighting.shape === inputValue
-    sighting.durationMinutes === inputValue
+    // https://forum.freecodecamp.org/t/filter-multiple-condition-javascript/341164/3 match the above variables
+    var filteredData = tableData.filter((sighting) => sighting.datetime === inputValueDate || !inputValueDate)
+        .filter(sighting => sighting.city === inputValue)
+        .filter(sighting => sighting.state === inputValue)
+        .filter(sighting => sighting.country === inputValue)
+        .filter(sighting => sighting.shape === inputValue)
+        .filter(sighting => sighting.durationMinutes === inputValue)
+
 
     console.log(filteredData);
 
-// Use filtered data to repopulate the table
-   filteredData.forEach(function(filteredItem) {
-       var row = tbody.append("tr");
-       Object.entries(filteredItem).forEach(([key,value]) => {
-           var cell = row.append("td");
-           cell.text(value);
-       });
-   });
+    // Use filtered data to repopulate the table
+    filteredData.forEach(function (filteredItem) {
+        var row = tbody.append("tr");
+        Object.entries(filteredItem).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
 };
