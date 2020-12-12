@@ -45,7 +45,7 @@ function runEnter() {
     // clear the table
     tbody.html("");
 
-    // Select the input element and get the raw HTML node 6 variables
+    // Select the input element and get the raw HTML node (need 6 variables to cover all sections in html)
     var inputElementDate = d3.select("#datetime");
     var inputElementCity = d3.select("#city");
     var inputElementState = d3.select("#state");
@@ -61,24 +61,22 @@ function runEnter() {
     var inputValueShape = inputElementShape.property('value');
     var inputValueDuration = inputElementDuration.property('value');
 
-    console.log(inputValue);
+    console.log(inputValueDate);
+    console.log(inputValueCity);
+    console.log(inputValueState);
+    console.log(inputValueCountry);
+    console.log(inputValueShape);
+    console.log(inputValueDuration);
 
     // use input on form to filter data by datetime in data.js file per Dan, can chain the filters to get data needed. will need an or statement so no matter how many filters entered it will run.
-    // from office hours 12.12 - use || ! so that if the filter does not have data it skips that filter and returns only the filters that have input
-    // data from data.js for reference
-    // datetime: "1/1/2010",
-    // city: "bonita",
-    // state: "ca",
-    // country: "us",
-    // shape: "light",
-    // durationMinutes: "13 minutes",
+    // from office hours 12.12 - use || ! so that if the filter does not have data it skips that filter and returns only the filters that have input then Mo helped after class
     // https://forum.freecodecamp.org/t/filter-multiple-condition-javascript/341164/3 match the above variables
     var filteredData = tableData.filter((sighting) => sighting.datetime === inputValueDate || !inputValueDate)
-        .filter(sighting => sighting.city === inputValue)
-        .filter(sighting => sighting.state === inputValue)
-        .filter(sighting => sighting.country === inputValue)
-        .filter(sighting => sighting.shape === inputValue)
-        .filter(sighting => sighting.durationMinutes === inputValue)
+        .filter(sighting => sighting.city === inputValueCity || !inputValueCity)
+        .filter(sighting => sighting.state === inputValueState || !inputValueState)
+        .filter(sighting => sighting.country === inputValueCountry || !inputValueCountry)
+        .filter(sighting => sighting.shape === inputValueShape || !inputValueShape)
+        .filter(sighting => sighting.durationMinutes === inputValueDuration || !inputValueDuration);
 
 
     console.log(filteredData);
