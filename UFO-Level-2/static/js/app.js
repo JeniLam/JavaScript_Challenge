@@ -93,6 +93,7 @@ function runEnter() {
 // from afterhours with Mo and Dez
 // create showData function which resets the table and then pass that function on the reset filter button
 function showData() {
+    var tableData = data;
     tableData.forEach(sighting => {
 
         // append one table row for each ufo object
@@ -107,7 +108,13 @@ function showData() {
     });
 };
 
+// https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_form_reset
+// <script>
+//   function formReset() {
+//     document.getElementById("datetimeform").reset();
+//   }</script>
 
+// resets form
 buttonClear.on("click", function () {
     showData(tableData)
 });
