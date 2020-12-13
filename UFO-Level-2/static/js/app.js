@@ -89,3 +89,25 @@ function runEnter() {
         });
     });
 };
+
+// from afterhours with Mo and Dez
+// create showData function which resets the table and then pass that function on the reset filter button
+function showData() {
+    tableData.forEach(sighting => {
+
+        // append one table row for each ufo object
+        var row = tbody.append("tr");
+    
+        // use object.entries and forEach to iterate through keys and values (day 2 activity 7 & 8 and Day 3 act 3) entries gets you both the Key & the value
+        Object.entries(sighting).forEach(([key, value]) => {
+            // append one cell per  value within data set (table headers in html)
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+};
+
+
+buttonClear.on("click", function () {
+    showData(tableData)
+});
